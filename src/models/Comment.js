@@ -1,20 +1,20 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const CommentSchema = new mongoose.Schema(
-  {
-    author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    article: { type: mongoose.Schema.Types.ObjectId, ref: "Article" },
-    body: String,
-  },
-  { timestamps: true }
+    {
+        author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        article: { type: mongoose.Schema.Types.ObjectId, ref: 'Article' },
+        body: String,
+    },
+    { timestamps: true },
 );
 
 CommentSchema.methods.toJSONFor = function (user) {
-  return {
-    id: this._id,
-    body: this.body,
-    createdAt: this.createdAt,
-    author: this.author.toProfileJSONFor(user),
-  };
+    return {
+        id: this._id,
+        body: this.body,
+        createdAt: this.createdAt,
+        author: this.author.toProfileJSONFor(user),
+    };
 };
-mongoose.model("Comment", CommentSchema);
+mongoose.model('Comment', CommentSchema);

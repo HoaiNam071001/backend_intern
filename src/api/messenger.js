@@ -53,7 +53,7 @@ const Messenger = (() => {
                     createdAt: req.body.message.createdAt,
                     sender: req.body.message.sender.id,
                 },
-                req.body.message.sender
+                req.body.message.sender,
             );
             return res.json(message);
         } catch (err) {

@@ -4,14 +4,10 @@ const VerifyToken = (req, res, next) => {
     const token = req.header('Authorization');
     try {
         if (!token) throw 'missing authorization credentials';
-        jwt.verify(
-            token.split(' ')[1],
-            process.env.JWT_SECRET,
-            function (err, decoded) {
-                if (err) throw 'Unauthorized';
-                req.payload = { id: decoded._id };
-            },
-        );
+        jwt.verify(token.split(' ')[1], process.env.JWT_SECRET, function (err, decoded) {
+            if (err) throw 'Unauthorized';
+            req.payload = { id: decoded._id };
+        });
 
         next();
     } catch (err) {
@@ -28,13 +24,9 @@ const CheckToken = (req, res, next) => {
             next();
             return;
         }
-        jwt.verify(
-            token.split(' ')[1],
-            process.env.JWT_SECRET,
-            function (err, decoded) {
-                if (!err) req.payload = { id: decoded._id };
-            },
-        );
+        jwt.verify(token.split(' ')[1], process.env.JWT_SECRET, function (err, decoded) {
+            if (!err) req.payload = { id: decoded._id };
+        });
         next();
     } catch (err) {
         res.status(401).json({

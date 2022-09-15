@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema(
         bio: String,
         following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     },
-    { timestamps: true }
+    { timestamps: true },
 );
 
 UserSchema.methods.validPassword = function (password) {

@@ -4,7 +4,7 @@ const RoomSchema = new mongoose.Schema(
     {
         members: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     },
-    { timestamps: true }
+    { timestamps: true },
 );
 RoomSchema.methods.toRoomJSON = function (id) {
     return {

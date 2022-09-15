@@ -26,7 +26,7 @@ const ArticleSchema = new mongoose.Schema(
             unique: true,
         },
     },
-    { timestamps: true }
+    { timestamps: true },
 );
 
 ArticleSchema.methods.toJSONFor = function (user) {

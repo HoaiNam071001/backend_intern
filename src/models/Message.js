@@ -9,7 +9,7 @@ const MessageSchema = new mongoose.Schema(
         },
         roomId: { type: mongoose.Schema.Types.ObjectId, ref: 'Room', required: true },
     },
-    { timestamps: true }
+    { timestamps: true },
 );
 
 MessageSchema.methods.toMessageJSON = function () {
